@@ -1,242 +1,237 @@
-# VOC 自动打标系统 v3.0
+# VOC Auto-Tagging System
 
-## 📋 系统简介
+## 📋 Overview
 
-VOC自动打标系统是一款用户反馈智能分析工具。系统能够自动识别用户反馈中的用户旅程触点、问题类型和情感倾向，帮助团队快速理解和分析大量用户反馈数据。
+The VOC Auto-Tagging System is an intelligent tool designed to analyze large-scale user feedback. It automatically identifies key touchpoints in the user journey, issue types, and sentiment polarity, helping teams gain actionable insights efficiently.
 
-### 主要功能
+## ✨ Key Features
 
-- **智能分析**：自动识别用户旅程、问题类型、情感倾向
-- **批量处理**：支持Excel、CSV等多种格式的批量数据处理
-- **可视化报告**：自动生成分析图表和统计报告
-- **简单易用**：图形化界面，无需技术背景即可使用
-
-## 🎯 标签体系
-
-### 用户旅程触点（可多选）
-
-**购车前体验**
-- 品牌认知、官网/App浏览体验、到店咨询/试驾预约
-
-**购车流程体验**  
-- 订购流程、销售服务态度、价格透明度
-
-**交付体验**
-- 交车速度与流程、交付培训、门店服务环境
-
-**驾驶体验**
-- 加速、制动、操控、悬挂与舒适度、噪音与隔音体验
-
-**智能功能体验**
-- 智能导航、语音助手、HUD/中控交互、OTA更新体验
-
-**充电与能耗**
-- 家用充电桩、公共充电站体验、续航表现
-
-**售后与服务**
-- 保养与维修、客服响应速度、二手车/置换服务
-
-### 问题类型（可多选）
-
-- **稳定性问题** - 卡顿、死机、闪退
-- **性能问题** - 速度慢、功耗高
-- **可用性问题** - 操作复杂、易误触
-- **兼容性问题** - 设备适配问题
-- **美观度问题** - 界面设计问题
-- **交互逻辑问题** - 操作流程问题
-- **安全隐患** - 安全相关问题
-- **服务体验问题** - 客服、售后问题
-- **期待落差** - 实际与预期不符
-
-### 情感倾向（单选）
-
-- **正面** - 满意、推荐、表扬
-- **中性** - 中立描述、客观反馈  
-- **负面** - 不满、抱怨、批评
-
-## 🚀 快速开始
-
-### 系统要求
-
-- Windows 10或更高版本
-- 建议8GB以上内存
-- 稳定的网络连接
-
-### 启动方式
-
-**方法一：双击启动（推荐）**
-```
-双击项目根目录下的 voc_launcher.ps1 文件
-```
-
-**方法二：右键启动**
-```
-右键点击 voc_launcher.ps1 → 使用PowerShell运行
-```
-
-首次使用时，系统会自动检查和安装必要的运行环境。
-
-## 💡 使用指南
-
-### 🎯 选择使用模式
-
-启动后会显示菜单，根据需要选择：
-
-```
-🎯 VOC智能分析系统 v3.0 - 快速启动
-┌─────────────────────────────────────────────┐
-│  1. 🎪 演示模式 (快速体验系统功能)           │
-│  2. 🔤 交互式模式 (日常使用推荐)             │
-│  3. 🎓 训练新模型 (更新模型时使用)           │
-│  4. 📊 批量处理文件 (处理大量数据)           │
-│  5. 📈 模型性能评估 (检查模型效果)           │
-│  6. 🔄 系统初始化 (重置系统)                │
-│  7. ❌ 退出                                 │
-└─────────────────────────────────────────────┘
-```
-
-### 📝 单条文本分析
-
-选择"交互式模式" → "单条文本智能分析"
-
-```
-请输入要分析的文本: 理想ONE的语音助手识别很准确，但是导航偶尔会绕路
-
-📋 智能分析结果:
-==================================================
-旅程触点    : 智能导航, 语音助手
-置信度      : 0.856
---------------------------------------------------
-问题类型    : 可用性问题
-置信度      : 0.743  
---------------------------------------------------
-情感        : 中性
-置信度      : 0.821
---------------------------------------------------
-```
-
-### 📊 批量文件处理
-
-**第一步：准备数据文件**
-
-Excel或CSV文件格式：
-```csv
-text,备注
-理想ONE的语音助手识别很准确，但是导航偶尔会绕路,用户反馈1
-充电速度比宣传的慢，续航也不如预期,用户反馈2
-销售顾问服务很好，交车流程很顺畅,用户反馈3
-```
-
-**第二步：选择批量处理**
-
-选择"批量处理文件"，按提示输入：
-- 文件路径：选择要处理的Excel/CSV文件
-- 文本列名：包含用户反馈的列名（默认为"text"）
-- 是否生成报告：建议选择"是"
-
-**第三步：查看结果**
-
-处理完成后会生成：
-- 带标签的结果文件（CSV格式）
-- 可视化分析报告（HTML格式）
-
-### 🎓 模型训练
-
-当需要使用自己的数据训练模型时：
-
-**训练数据格式：**
-```csv
-text,旅程触点,问题类型,情感
-导航经常带我绕远路，语音也识别不出来,"智能导航,语音助手","稳定性问题,可用性问题",负面
-交车当天小哥讲解得很细，座椅按摩也比想象中舒服,"交付培训,悬挂与舒适度",,正面
-```
-
-**注意事项：**
-- 多个标签用逗号分隔
-- 建议至少准备500条已标注数据
-- 确保数据质量和标注准确性
-
-## 📁 文件结构
-
-```
-voc-analyzer/
-├── voc_launcher.ps1              # 启动程序（双击运行）
-├── README.md                     # 使用说明
-├── src/                          # 程序文件（无需关注）
-├── data/                         # 数据目录
-│   ├── voc_sample_data.csv       # 示例数据
-│   ├── models/                   # 模型文件
-│   ├── logs/                     # 系统日志
-│   └── reports/                  # 分析报告
-└── config/                       # 配置文件
-```
-
-## 🛠️ 常见问题
-
-### 启动问题
-
-**问题：双击无法启动**
-- 确保使用Windows 10或更高版本
-- 右键选择"使用PowerShell运行"
-- 如仍无法启动，联系技术支持
-
-**问题：提示"执行策略"错误**
-- 以管理员身份打开PowerShell
-- 执行：`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
-- 输入Y确认，然后重新启动程序
-
-### 使用问题
-
-**问题：文件读取失败**
-- 确保文件为Excel(.xlsx)或CSV(.csv)格式
-- 检查文件是否正在被其他程序占用
-- 确保文件编码为UTF-8
-
-**问题：分析结果不准确**
-- 检查输入文本是否清晰完整
-- 如果是专业术语较多，可能需要重新训练模型
-- 联系数据团队获取更多训练数据
-
-**问题：处理速度慢**
-- 首次运行会下载模型，需要一些时间
-- 大批量数据建议分批处理
-- 确保网络连接稳定
-
-### 输出文件说明
-
-**结果CSV文件包含：**
-- 原始文本
-- 识别出的旅程触点
-- 识别出的问题类型  
-- 情感倾向
-- 各项置信度分数
-
-**HTML报告包含：**
-- 数据概览统计
-- 各维度分布图表
-- 关联分析热力图
-- 详细数据质量报告
-
-## 📋 最佳实践
-
-### 数据准备建议
-
-1. **文本质量**
-   - 确保文本完整、清晰
-   - 去除无关的符号和格式
-   - 一行一条完整的用户反馈
-
-2. **批量处理**
-   - 单次处理建议不超过5000条
-   - 大文件可分批处理
-   - 定期清理临时文件
-
-3. **结果使用**
-   - 关注置信度较高的结果
-   - 置信度低于0.5的建议人工复核
-   - 定期基于新数据更新模型
-
+* **Smart Tagging**: Automatically detects user journey stages, issue types, and sentiment.
+* **Batch Processing**: Supports bulk data import via Excel or CSV.
+* **Visualization Reports**: Generates visual dashboards and summary reports.
+* **User-Friendly Interface**: No technical background required to operate.
 
 ---
 
-*最后更新：2025年5月26*
+## 🎯 Tagging Framework
+
+### **User Journey Touchpoints** (multi-label)
+
+* **Pre-Purchase**: Brand perception, website/App experience, in-store inquiry/test drive
+* **Purchase Process**: Ordering flow, sales service attitude, pricing transparency
+* **Delivery**: Handover speed/process, onboarding training, store environment
+* **Driving Experience**: Acceleration, braking, handling, comfort, noise
+* **Smart Features**: Navigation, voice assistant, HUD/control interaction, OTA
+* **Charging & Energy**: Home charging, public stations, range performance
+* **After-Sales Service**: Maintenance, customer support, trade-in
+
+### **Issue Types** (multi-label)
+
+* Stability | Performance | Usability | Compatibility
+* Aesthetics | Interaction Logic | Safety | Service Experience | Expectation Gap
+
+### **Sentiment Polarity** (single-label)
+
+* Positive | Neutral | Negative
+
+---
+
+## 🚀 Quick Start
+
+### **System Requirements**
+
+* Windows 10 or later
+* Recommended: 8GB+ RAM
+* Stable internet connection
+
+### **Launch Instructions**
+
+**Method 1 (Recommended):**
+
+* Double-click `voc_launcher.ps1` in the project root.
+
+**Method 2:**
+
+* Right-click `voc_launcher.ps1` → Run with PowerShell.
+
+On first run, the system will auto-install required environments.
+
+---
+
+## 💡 Usage Guide
+
+### **Choose Mode on Startup**
+
+```
+🎯 VOC Analyzer v3.0 - Main Menu
+
+1. 🎪 Demo Mode (Quick preview)
+2. 🔤 Interactive Mode (Recommended)
+3. 🎓 Train New Model
+4. 📊 Batch Process Files
+5. 📈 Model Performance Evaluation
+6. 🔄 System Initialization
+7. ❌ Exit
+```
+
+### **Single Text Analysis**
+
+Go to `Interactive Mode` → `Analyze a Single Text`.
+
+Example input:
+
+> "The voice assistant of Li Auto ONE is accurate, but the navigation sometimes takes a longer route."
+
+**Output:**
+
+* Touchpoints: Smart Navigation, Voice Assistant
+* Issues: Usability
+* Sentiment: Neutral
+* Confidence Scores Included
+
+---
+
+## 📊 Batch File Processing
+
+### Step 1: Prepare Input File
+
+CSV or Excel format:
+
+```
+text,notes  
+"The voice assistant is accurate, but the navigation is off-route.", Feedback 1  
+"Charging is slower than advertised.", Feedback 2  
+"Sales service was great, smooth delivery process.", Feedback 3  
+```
+
+### Step 2: Run Batch Mode
+
+Choose `Batch Process Files` and follow prompts:
+
+* File Path
+* Text Column Name (default: `text`)
+* Generate Report? (recommended: Yes)
+
+### Step 3: View Results
+
+* Tagged CSV output
+* HTML report with visual analytics
+
+---
+
+## 🎓 Model Training
+
+To train with custom data:
+
+**Format Example:**
+
+```
+text,touchpoints,issue_types,sentiment  
+"Navigation often takes longer routes, voice not recognized","Smart Navigation,Voice Assistant","Stability,Usability",Negative  
+"Delivery staff gave detailed instructions, seat massage was impressive","Delivery Training,Suspension Comfort",,Positive  
+```
+
+**Notes:**
+
+* Use commas to separate multiple labels
+* Min. 500 labeled samples recommended
+* Ensure clean, accurate labeling
+
+---
+
+## 📁 File Structure
+
+```
+voc-analyzer/
+├── voc_launcher.ps1           # Launcher script
+├── README.md                  # Documentation
+├── src/                       # Core source files
+├── data/
+│   ├── voc_sample_data.csv    # Sample data
+│   ├── models/                # Trained models
+│   ├── logs/                  # System logs
+│   └── reports/               # Generated reports
+└── config/                    # Configuration files
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+### Startup Issues
+
+**Problem**: Cannot launch
+
+* Confirm Windows 10+
+* Right-click → "Run with PowerShell"
+
+**Problem**: Execution policy error
+
+* Run PowerShell as Admin:
+  `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
+  Confirm with `Y`, then relaunch.
+
+### Usage Issues
+
+**File read error**
+
+* Ensure file is CSV/XLSX and not open elsewhere
+* File must be UTF-8 encoded
+
+**Inaccurate tagging**
+
+* Ensure clear and complete input text
+* Consider retraining the model for domain-specific language
+
+**Slow performance**
+
+* First run may download models
+* For large datasets, process in batches
+* Check your network connection
+
+---
+
+## 📋 Output Details
+
+### CSV Output
+
+* Original text
+* Predicted touchpoints
+* Predicted issue types
+* Sentiment polarity
+* Confidence scores
+
+### HTML Report
+
+* Summary stats
+* Charts by category
+* Correlation heatmaps
+* Quality diagnostics
+
+---
+
+## ✅ Best Practices
+
+### Data Preparation
+
+* Ensure clean, well-written text
+* One feedback per line
+* Remove irrelevant symbols or formatting
+
+### Batch Processing
+
+* Recommend ≤5000 entries per batch
+* Split larger files for stability
+* Clear temp files regularly
+
+### Interpreting Results
+
+* Focus on high-confidence results
+* Review predictions below 0.5 manually
+* Retrain periodically with new data
+
+---
+
+*Last updated: May 26, 2025*
+
+---
